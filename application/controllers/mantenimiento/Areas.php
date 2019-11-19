@@ -32,4 +32,23 @@ class Areas extends CI_Controller {
 		$this->load->view("mantenimiento/areas/list",$data);
 		$this->load->view('layouts/footer');
 	}
+
+	public function view($id){
+		$data  = array(
+			'area' => $this->Areas_model->getArea($id),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("mantenimiento/areas/view",$data);
+		$this->load->view('layouts/footer');
+	}
+	public function edit($id){
+		$data  = array(
+			'area' => $this->Areas_model->getArea($id),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("mantenimiento/areas/edit",$data);
+		$this->load->view('layouts/footer');
+	}
 }

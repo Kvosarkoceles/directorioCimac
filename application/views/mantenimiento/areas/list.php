@@ -27,8 +27,8 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
+                <th>#</th>
                 <th>Nombre</th>
-                <th>Observaciones</th>
                 <th>Descripcion</th>
                 <th>Estatus</th>
                 <th>Ver</th>
@@ -45,7 +45,7 @@
                           <td><?php echo $area->descripcion;?></td>
                           <td><?php echo $area->estatus;?></td>
                           <td>
-                            <a href="<?php echo base_url()?>admin/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
+                            <a href="<?php echo base_url()?>mantenimiento/areas/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
                           </td>
                           <td>
                             <a href="<?php echo base_url()?>admin/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>

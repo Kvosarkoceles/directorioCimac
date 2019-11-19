@@ -79,7 +79,7 @@ $autoload['libraries'] = array('database','session','backend_lib');
 |	$autoload['drivers'] = array('cache' => 'cch');
 |
 */
-$autoload['drivers'] = array();
+$autoload['drivers'] = array('cache');
 
 /*
 | -------------------------------------------------------------------
