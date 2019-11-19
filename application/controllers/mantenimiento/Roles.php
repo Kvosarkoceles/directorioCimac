@@ -1,8 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Roles extends CI_Controller {
 
+	public function __construct(){
+
+		parent::__construct();
+		$this->load->model("mantenimiento/Roles_model");
+	}
 	/**
 	 * Index Page for this controller.
 	 *
@@ -18,12 +23,13 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-
-				$this->load->view('layouts/header');
-				$this->load->view('layouts/aside');
-				$this->load->view('blank');
-				$this->load->view('layouts/footer');
+	public function index(){
+		$data  = array(
+			'areas' => $this->Roles_model->getRoles(),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("mantenimiento/roles/list",$data);
+		$this->load->view('layouts/footer');
 	}
 }
