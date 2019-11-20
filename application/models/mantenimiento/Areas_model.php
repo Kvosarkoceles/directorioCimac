@@ -22,6 +22,7 @@ class Areas_model extends CI_Model {
 		return $resultados->row();
 	}
 	public function update($id,$data){
+		$this->db->cache_delete_all();
 		$this->db->where("id",$id);
 		return $this->db->update("areas",$data);
 	}
