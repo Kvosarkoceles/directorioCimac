@@ -48,13 +48,13 @@
                             <a href="<?php echo base_url()?>mantenimiento/areas/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
                           </td>
                           <td>
-                            <a href="<?php echo base_url()?>admin/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
+                            <a href="<?php echo base_url()?>mantenimiento/areas/edit/<?php echo $area->id;?>" ><span class="fa  fa-pencil text-yellow"></span></a>
                           </td>
                           <td>
                             <?php if ($area->id_estatus == 1): ?>
-                              <a href="<?php echo base_url()?>admin/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
+                              <a href="<?php echo base_url()?>mantenimiento/areas/disabled/<?php echo $area->id;?>" ><span class="fa  fa-close text-red"></span></a>
                             <?php else: ?>
-                              <a href="<?php echo base_url()?>admin/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-red"></span></a>
+                              <a href="<?php echo base_url()?>mantenimiento/areas/enabled/<?php echo $area->id;?>" ><span class="fa  fa-check text-aqua"></span></a>
                             <?php endif; ?>
 
                           </td>
@@ -78,6 +78,12 @@
               </tfoot>
             </table>
           </div>
+          <div class="box-body" align="left" >
+            <a href="<?php echo base_url()?>mantenimiento/areas/add"  class="btn btn-danger" >Agregar</a>
+
+          </div>
+          <br>
+
           <!-- /.box-body -->
         </div>
         <!-- /.box -->

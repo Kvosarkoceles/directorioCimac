@@ -26,33 +26,34 @@
           </div>
           <!-- /.box-header -->
           <!-- form start -->
-          <form role="form">
+          <form role="form" action="<?php echo base_url();?>mantenimiento/areas/update" method="POST">
+            <input type="hidden" name="id_area" value="<?php echo $area->id?>">
             <div class="box-body">
               <div class="form-group">
                 <label for="nombre_area">Nombre</label>
-                <input type="text" class="form-control" id="nombre_area" value="<?php echo $area->nombre; ?>">
+                <input type="text" class="form-control" id="nombre_area" name="nombre_area" value="<?php echo $area->nombre; ?>">
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Descripcion</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" value="<?php echo $area->descripcion; ?>">
+                <label for="descripcion_area">Descripcion</label>
+                <input type="text" class="form-control" id="descripcion_area" name="descripcion_area" value="<?php echo $area->descripcion; ?>">
               </div>
               <div class="form-group">
-                  <label>Estatus</label>
-                  <select class="form-control">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
-                </div>              
+                    <label for="estatus_area">Estatus:</label>
+                    <select name="estatus_area" id="estatus_area" class="form-control">
+                        <?php foreach($menu_estatus as $rol):?>
+                            <option value="<?php echo $rol->id;?>" <?php echo $rol->id==$area->id_estatus
+                            ? "selected":"";?> ><?php echo $rol->nombre;?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
             </div>
             <!-- /.box-body -->
 
             <div class="box-footer">
-              <button type="submit" class="btn btn-danger">Submit</button>
+              <button type="submit" class="btn btn-danger">Guardar</button>
             </div>
           </form>
+          
         </div>
         <!-- /.box -->
 

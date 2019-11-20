@@ -32,7 +32,15 @@ class Areas extends CI_Controller {
 		$this->load->view("mantenimiento/areas/list",$data);
 		$this->load->view('layouts/footer');
 	}
-
+	public function add(){
+		$data  = array(
+			'menu_estatus' => $this->Areas_model->getMenuStatus(),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("mantenimiento/areas/add",$data);
+		$this->load->view('layouts/footer');
+	}
 	public function view($id){
 		$data  = array(
 			'area' => $this->Areas_model->getArea($id),
@@ -45,10 +53,57 @@ class Areas extends CI_Controller {
 	public function edit($id){
 		$data  = array(
 			'area' => $this->Areas_model->getArea($id),
+			'menu_estatus' => $this->Areas_model->getMenuStatus(),
 		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
 		$this->load->view("mantenimiento/areas/edit",$data);
 		$this->load->view('layouts/footer');
+	}
+	public function update(){
+		$id_area = $this->input->post("id_area");
+		$nombre = $this->input->post("nombre_area");
+		$descripcion = $this->input->post("descripcion_area");
+		$estatus = $this->input->post("estatus_area");
+
+		$data  = array(
+			'nombre' => $nombre,
+			'descripcion' => $descripcion,
+			'id_estatus' => $estatus,
+		);
+
+		if ($this->Areas_model->update($id_area,$data)) {
+			redirect(base_url()."mantenimiento/areas/view/".$id_area);
+		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."mantenimiento/areas/edit/".$id_area);
+		}
+	}
+	public function enabled($id){
+		$data  = array(
+			'id_estatus' => 1,
+		);
+
+		if ($this->Areas_model->update($id,$data)) {
+			redirect(base_url()."mantenimiento/areas/");
+		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."mantenimiento/areas/");
+		}
+	}
+	public function disabled($id){
+		$data  = array(
+			'id_estatus' => 2,
+		);
+
+		if ($this->Areas_model->update($id,$data)) {
+			redirect(base_url()."mantenimiento/areas/");
+		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."mantenimiento/areas/");
+		}
 	}
 }

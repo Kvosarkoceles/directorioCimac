@@ -20,11 +20,13 @@ class Areas_model extends CI_Model {
 		$this->db->where("a.id",$id);
 		$resultados = $this->db->get();
 		return $resultados->row();
-
-
-
-
-
-
+	}
+	public function update($id,$data){
+		$this->db->where("id",$id);
+		return $this->db->update("areas",$data);
+	}
+	public function getMenuStatus(){
+		$resultados = $this->db->get("menu_status");
+		return $resultados->result();
 	}
 }
