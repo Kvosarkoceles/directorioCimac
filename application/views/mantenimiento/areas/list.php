@@ -67,8 +67,8 @@
               </tbody>
               <tfoot>
               <tr>
+                <th>#</th>
                 <th>Nombre</th>
-                <th>Observaciones</th>
                 <th>Descripcion</th>
                 <th>Estatus</th>
                 <th>Ver</th>

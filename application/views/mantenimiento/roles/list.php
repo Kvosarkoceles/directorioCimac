@@ -20,15 +20,15 @@
 
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Areas</h3>
+            <h3 class="box-title">Roles</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
+                <th>#</th>
                 <th>Nombre</th>
-                <th>Observaciones</th>
                 <th>Descripcion</th>
                 <th>Estatus</th>
                 <th>Ver</th>
@@ -45,16 +45,16 @@
                           <td><?php echo $area->descripcion;?></td>
                           <td><?php echo $area->estatus;?></td>
                           <td>
-                            <a href="<?php echo base_url()?>admin/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
+                            <a href="<?php echo base_url()?>mantenimiento/roles/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
                           </td>
                           <td>
-                            <a href="<?php echo base_url()?>admin/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
+                            <a href="<?php echo base_url()?>mantenimiento/roles/edit/<?php echo $area->id;?>" ><span class="fa  fa  fa-pencil text-yellow"></span></a>
                           </td>
                           <td>
                             <?php if ($area->id_estatus == 1): ?>
-                              <a href="<?php echo base_url()?>admin/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
+                              <a href="<?php echo base_url()?>mantenimiento/roles/disabled/<?php echo $area->id;?>" ><span class="fa  fa-close text-red"></span></a>
                             <?php else: ?>
-                              <a href="<?php echo base_url()?>admin/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-red"></span></a>
+                              <a href="<?php echo base_url()?>mantenimiento/roles/enabled/<?php echo $area->id;?>" ><span class="fa  fa-check text-aqua"></span></a>
                             <?php endif; ?>
 
                           </td>
@@ -67,8 +67,8 @@
               </tbody>
               <tfoot>
               <tr>
+                <th>#</th>
                 <th>Nombre</th>
-                <th>Observaciones</th>
                 <th>Descripcion</th>
                 <th>Estatus</th>
                 <th>Ver</th>
@@ -77,6 +77,10 @@
               </tr>
               </tfoot>
             </table>
+          </div>
+          <div class="box-body" align="left" >
+            <a href="<?php echo base_url()?>mantenimiento/roles/add"  class="btn btn-danger" >Agregar</a>
+
           </div>
           <!-- /.box-body -->
         </div>

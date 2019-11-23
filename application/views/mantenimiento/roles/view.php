@@ -3,12 +3,13 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      User Profile
+      Roles
+      <small>CIMAC</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="#">Examples</a></li>
-      <li class="active">User profile</li>
+      <li><a href="<?php echo base_url()?>"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="<?php echo base_url()?>mantenimiento/roles">Roles</a></li>
+      <li class="active"><?php echo $area->nombre; ?></li>
     </ol>
   </section>
 
@@ -16,75 +17,46 @@
   <section class="content">
 
     <div class="row">
-      <div class="col-md-6">
 
-        <!-- Profile Image -->
-        <div class="box box-primary">
-          <div class="box-body box-profile">
-            <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>dist/img/user4-128x128.jpg" alt="User profile picture">
-
-            <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-            <p class="text-muted text-center">Software Engineer</p>
-
-            <ul class="list-group list-group-unbordered">
-              <li class="list-group-item">
-                <b>Followers</b> <a class="pull-right">1,322</a>
-              </li>
-              <li class="list-group-item">
-                <b>Following</b> <a class="pull-right">543</a>
-              </li>
-              <li class="list-group-item">
-                <b>Friends</b> <a class="pull-right">13,287</a>
-              </li>
-            </ul>
-
-            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-          </div>
-          <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-
-
-      </div>
-      <!-- /.col -->
       <div class="col-md-6">
         <!-- About Me Box -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">About Me</h3>
+            <h3 class="box-title">Sobre el Rol</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+            <strong><i class="fa fa-book margin-r-5"></i> Nombre</strong>
 
             <p class="text-muted">
-              B.S. in Computer Science from the University of Tennessee at Knoxville
+              <?php echo $area->nombre; ?>
             </p>
 
             <hr>
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+            <strong><i class="fa  fa-pencil-square-o margin-r-5"></i> Descripcion</strong>
 
-            <p class="text-muted">Malibu, California</p>
+            <p class="text-muted">
+              <?php echo $area->descripcion; ?>
+            </p>
 
             <hr>
 
-            <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+            <strong><i class="fa fa-check-square-o margin-r-5"></i> Estado</strong>
+            <p class="text-muted">
+              <?php echo $area->estatus; ?>
+            </p>
+
+
+
+            <hr>
+
+
 
             <p>
-              <span class="label label-danger">UI Design</span>
-              <span class="label label-success">Coding</span>
-              <span class="label label-info">Javascript</span>
-              <span class="label label-warning">PHP</span>
-              <span class="label label-primary">Node.js</span>
+              <a class="btn btn-block btn-danger btn-sm" href="<?php echo base_url()?>mantenimiento/roles/edit/<?php echo $area->id; ?>">Editar</a>
+
             </p>
-
-            <hr>
-
-            <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
           </div>
           <!-- /.box-body -->
         </div>

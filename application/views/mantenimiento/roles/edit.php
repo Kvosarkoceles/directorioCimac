@@ -8,8 +8,8 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url()?>"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="<?php echo base_url()?>mantenimiento/areas">Areas</a></li>
-      <li><a href="<?php echo base_url()?>mantenimiento/areas/view/<?php echo $area->id; ?>"><?php echo $area->nombre; ?></a></li>
+      <li><a href="<?php echo base_url()?>mantenimiento/roles">Roles</a></li>
+      <li><a href="<?php echo base_url()?>mantenimiento/roles/view/<?php echo $area->id; ?>"><?php echo $area->nombre; ?></a></li>
       <li class="active">Editar</li>
     </ol>
   </section>
@@ -26,20 +26,20 @@
           </div>
           <!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?php echo base_url();?>mantenimiento/areas/update" method="POST">
-            <input type="hidden" name="id_area" value="<?php echo $area->id?>">
+          <form role="form" action="<?php echo base_url();?>mantenimiento/roles/update" method="POST">
+            <input type="hidden" name="id_rol" value="<?php echo $area->id?>">
             <div class="box-body col-md-6">
               <div class="form-group col-md-12">
-                <label for="nombre_area">Nombre</label>
-                <input type="text" class="form-control" id="nombre_area" name="nombre_area" value="<?php echo $area->nombre; ?>">
+                <label for="nombre_rol">Nombre</label>
+                <input type="text" class="form-control" id="nombre_rol" name="nombre_rol" value="<?php echo $area->nombre; ?>">
               </div>
               <div class="form-group col-md-12">
-                <label for="descripcion_area">Descripcion</label>
-                <input type="text" class="form-control" id="descripcion_area" name="descripcion_area" value="<?php echo $area->descripcion; ?>">
+                <label for="descripcion_rol">Descripcion</label>
+                <input type="text" class="form-control" id="descripcion_rol" name="descripcion_rol" value="<?php echo $area->descripcion; ?>">
               </div>
               <div class="form-group col-md-3">
-                    <label for="estatus_area">Estatus:</label>
-                    <select name="estatus_area" id="estatus_area" class="form-control">
+                    <label for="estatus_rol">Estatus:</label>
+                    <select name="estatus_rol" id="estatus_rol" class="form-control">
                         <?php foreach($menu_estatus as $rol):?>
                             <option value="<?php echo $rol->id;?>" <?php echo $rol->id==$area->id_estatus
                             ? "selected":"";?> ><?php echo $rol->nombre;?></option>

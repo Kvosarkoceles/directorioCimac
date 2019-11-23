@@ -41,6 +41,30 @@ class Areas extends CI_Controller {
 		$this->load->view("mantenimiento/areas/add",$data);
 		$this->load->view('layouts/footer');
 	}
+	public function store(){
+		$nombre = $this->input->post("nombre_area");
+		$descripcion = $this->input->post("descripcion_area");
+		$id_estatus = $this->input->post("estatus_area");
+		$this->form_validation->set_rules("nombre_area","Nombre","required|min_length[3]");
+		$this->form_validation->set_rules("descripcion_area","Descripcion","required|min_length[3]");
+		if ($this->form_validation->run() == FALSE) {
+			$this->add();
+		}
+		else {
+			$data  = array(
+				'nombre' => $nombre,
+				'descripcion' => $descripcion,
+				'id_estatus' => $id_estatus,
+			);
+			if ($this->Areas_model->save($data)) {
+				redirect(base_url()."mantenimiento/areas");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."mantenimiento/areas/add");
+			}
+		}
+	}
 	public function view($id){
 		$data  = array(
 			'area' => $this->Areas_model->getArea($id),

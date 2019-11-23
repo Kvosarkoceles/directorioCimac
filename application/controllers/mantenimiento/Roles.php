@@ -32,4 +32,102 @@ class Roles extends CI_Controller {
 		$this->load->view("mantenimiento/roles/list",$data);
 		$this->load->view('layouts/footer');
 	}
+	public function add(){
+		$data  = array(
+			'menu_estatus' => $this->Roles_model->getMenuStatus(),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("mantenimiento/roles/add",$data);
+		$this->load->view('layouts/footer');
+	}
+	public function store(){
+		$nombre = $this->input->post("nombre_rol");
+		$descripcion = $this->input->post("descripcion_rol");
+		$id_estatus = $this->input->post("estatus_rol");
+		$this->form_validation->set_rules("nombre_rol","Nombre","required|min_length[3]");
+		$this->form_validation->set_rules("descripcion_rol","Descripcion","required|min_length[3]");
+		if ($this->form_validation->run() == FALSE) {
+			$this->add();
+		}
+		else {
+			$data  = array(
+				'nombre' => $nombre,
+				'descripcion' => $descripcion,
+				'id_estatus' => $id_estatus,
+			);
+			if ($this->Roles_model->save($data)) {
+				redirect(base_url()."mantenimiento/roles");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."mantenimiento/roles/add");
+			}
+		}
+	}
+	public function view($id){
+		$data  = array(
+			'area' => $this->Roles_model->getRol($id),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("mantenimiento/roles/view",$data);
+		$this->load->view('layouts/footer');
+	}
+	public function edit($id){
+		$data  = array(
+			'area' => $this->Roles_model->getRol($id),
+			'menu_estatus' => $this->Roles_model->getMenuStatus(),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("mantenimiento/roles/edit",$data);
+		$this->load->view('layouts/footer');
+	}
+	public function update(){
+		$id_rol = $this->input->post("id_rol");
+		$nombre = $this->input->post("nombre_rol");
+		$descripcion = $this->input->post("descripcion_rol");
+		$estatus = $this->input->post("estatus_rol");
+
+		$data  = array(
+			'nombre' => $nombre,
+			'descripcion' => $descripcion,
+			'id_estatus' => $estatus,
+		);
+
+		if ($this->Roles_model->update($id_rol,$data)) {
+			redirect(base_url()."mantenimiento/roles/view/".$id_rol);
+		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."mantenimiento/roles/edit/".$id_rol);
+		}
+	}
+	public function enabled($id){
+		$data  = array(
+			'id_estatus' => 1,
+		);
+
+		if ($this->Roles_model->update($id,$data)) {
+			redirect(base_url()."mantenimiento/roles");
+		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."mantenimiento/roles");
+		}
+	}
+	public function disabled($id){
+		$data  = array(
+			'id_estatus' => 2,
+		);
+
+		if ($this->Roles_model->update($id,$data)) {
+			redirect(base_url()."mantenimiento/roles");
+		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."mantenimiento/roles");
+		}
+	}
 }

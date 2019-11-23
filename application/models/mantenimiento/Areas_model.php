@@ -30,4 +30,8 @@ class Areas_model extends CI_Model {
 		$resultados = $this->db->get("menu_status");
 		return $resultados->result();
 	}
+	public function save($data){
+		$this->db->cache_delete_all();
+		return $this->db->insert("areas",$data);
+	}
 }
