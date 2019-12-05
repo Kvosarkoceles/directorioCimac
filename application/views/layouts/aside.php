@@ -22,25 +22,25 @@
       <li class="header">Mantenimiento</li>
       <li class="treeview menu-open" style="height: auto;">
             <a href="#">
-              <i class="fa fa-folder"></i> <span>Administrador</span>
+              <i class="fa fa-folder text-green"></i> <span>Administrador</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: block;">
-              <li><a href="<?php echo base_url();?>administrador/usuarios"><i class="fa fa-circle-o"></i> Usuarias</a></li>
+              <li><a href="<?php echo base_url();?>administrador/usuarios"><i class="fa fa-users text-aqua"></i> Usuarias</a></li>
             </ul>
       </li>
       <li class="treeview menu-open" style="height: auto;">
             <a href="#">
-              <i class="fa fa-folder"></i> <span>Configuración</span>
+              <i class="fa fa-folder text-red"></i> <span>Configuración</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" style="display: block;">
-              <li><a href="<?php echo base_url();?>mantenimiento/areas"><i class="fa fa-circle-o"></i> Areas</a></li>
-              <li><a href="<?php echo base_url();?>mantenimiento/roles"><i class="fa fa-circle-o"></i> Roles</a></li>
+              <li><a href="<?php echo base_url();?>mantenimiento/areas"><i class="fa  fa-industry text-green"></i> Areas</a></li>
+              <li><a href="<?php echo base_url();?>mantenimiento/roles"><i class="fa fa-cogs text-yellow"></i> Roles</a></li>
 
             </ul>
       </li>

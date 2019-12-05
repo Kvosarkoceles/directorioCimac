@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="#">Configuración</a></li>
-      <li class="active">Areas</li>
+      <li class="active">Usuarias</li>
     </ol>
   </section>
 
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-xs-12">
 
-        <div class="box">
+        <div class="box box-danger">
           <div class="box-header">
             <h3 class="box-title">Usuarias</h3>
           </div>
@@ -49,7 +49,7 @@
                           <td><?php echo $area->username;?></td>
                           <td><?php echo $area->rol;?></td>
                           <td>
-                            <a href="<?php echo base_url()?>mantenimiento/roles/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
+                            <a href="<?php echo base_url()?>administrador/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
                           </td>
                           <td>
                             <a href="<?php echo base_url()?>mantenimiento/roles/edit/<?php echo $area->id;?>" ><span class="fa  fa  fa-pencil text-yellow"></span></a>
@@ -83,6 +83,10 @@
               </tr>
               </tfoot>
             </table>
+          </div>
+          <div class="box-body" align="left" >
+            <a href="<?php echo base_url()?>administrador/usuarios/add"  class="btn btn-danger" >Agregar</a>
+
           </div>
           <!-- /.box-body -->
         </div>

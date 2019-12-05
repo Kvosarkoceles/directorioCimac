@@ -32,4 +32,41 @@ class Usuarios extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
+	public function view($id){
+
+
+		//	"usuario" => $this->Usuarios_model->getUsuario($idusuario),
+			//'areas' => $this->Usuarios_model->getAreas(),
+
+		$data  = array(
+			'areas' => $this->Usuarios_model->getUsuarios(),
+			"usuario" => $this->Usuarios_model->getUsuario($id),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("administrador/usuarios/view",$data);
+		$this->load->view('layouts/footer');
+
+	}
+	public function add(){
+		$data  = array(
+			'areas' => $this->Usuarios_model->getMenuAreas(),
+			'roles' => $this->Usuarios_model->getMenuRoles(),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("administrador/usuarios/add",$data);
+		$this->load->view('layouts/footer');
+	}
+	public function edit($id){
+		$data  = array(
+			'areas' => $this->Usuarios_model->getMenuAreas(),
+			'roles' => $this->Usuarios_model->getMenuRoles(),
+			"usuario" => $this->Usuarios_model->getUsuario($id),
+		);
+		$this->load->view('layouts/header');
+		$this->load->view('layouts/aside');
+		$this->load->view("administrador/usuarios/edit",$data);
+		$this->load->view('layouts/footer');
+	}
 }
