@@ -31,19 +31,29 @@
               <li><a href="<?php echo base_url();?>administrador/usuarios"><i class="fa fa-users text-aqua"></i> Usuarias</a></li>
             </ul>
       </li>
-      <li class="treeview menu-open" style="height: auto;">
-            <a href="#">
-              <i class="fa fa-folder text-red"></i> <span>Configuración</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu" style="display: block;">
-              <li><a href="<?php echo base_url();?>mantenimiento/areas"><i class="fa  fa-industry text-green"></i> Areas</a></li>
-              <li><a href="<?php echo base_url();?>mantenimiento/roles"><i class="fa fa-cogs text-yellow"></i> Roles</a></li>
 
-            </ul>
-      </li>
+      <li class="treeview menu-open" style="height: auto;">
+              <a href="#"><i class="fa fa-gears text-red"></i> Configuración
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: block;">
+                <li><a href="<?php echo base_url();?>mantenimiento/areas"><i class="fa  fa-industry text-green"></i> Areas</a></li>
+                <li><a href="<?php echo base_url();?>mantenimiento/roles"><i class="fa fa-cogs text-yellow"></i> Roles</a></li>
+                <li class="treeview menu-open">
+                  <a href="#"><i class="fa fa-circle-o text-aqua"></i> Categorias
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu" style="display: block;">
+                    <li><a href="<?php echo base_url();?>mantenimiento/telefonos"><i class="fa fa-phone text-red"></i> Telefonos</a></li>
+                    <li><a href="<?php echo base_url();?>mantenimiento/emails"><i class="fa fa-envelope text-green"></i> Correos</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
     </ul>
   </section>
   <!-- /.sidebar -->

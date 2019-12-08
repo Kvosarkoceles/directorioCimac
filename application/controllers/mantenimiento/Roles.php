@@ -45,7 +45,7 @@ class Roles extends CI_Controller {
 		$nombre = $this->input->post("nombre_rol");
 		$descripcion = $this->input->post("descripcion_rol");
 		$id_estatus = $this->input->post("estatus_rol");
-		$this->form_validation->set_rules("nombre_rol","Nombre","required|min_length[3]");
+		$this->form_validation->set_rules("nombre_rol","Nombre","required|min_length[3]|is_unique[menu_roles.nombre]");
 		$this->form_validation->set_rules("descripcion_rol","Descripcion","required|min_length[3]");
 		if ($this->form_validation->run() == FALSE) {
 			$this->add();

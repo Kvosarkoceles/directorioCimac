@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Areas extends CI_Controller {
+class Emails extends CI_Controller {
 
 	public function __construct(){
 
 		parent::__construct();
-		$this->load->model("mantenimiento/Areas_model");
+		$this->load->model("mantenimiento/Emails_model");
 	}
 	/**
 	 * Index Page for this controller.
@@ -25,28 +25,28 @@ class Areas extends CI_Controller {
 	 */
 	public function index(){
 		$data  = array(
-			'areas' => $this->Areas_model->getAreas(),
+			'areas' => $this->Emails_model->getEmails(),
 		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
-		$this->load->view("mantenimiento/areas/list",$data);
+		$this->load->view("mantenimiento/emails/list",$data);
 		$this->load->view('layouts/footer');
 	}
 	public function add(){
 		$data  = array(
-			'menu_estatus' => $this->Areas_model->getMenuStatus(),
+			'menu_estatus' => $this->Emails_model->getMenuStatus(),
 		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
-		$this->load->view("mantenimiento/areas/add",$data);
+		$this->load->view("mantenimiento/emails/add",$data);
 		$this->load->view('layouts/footer');
 	}
 	public function store(){
-		$nombre = $this->input->post("nombre_area");
-		$descripcion = $this->input->post("descripcion_area");
-		$id_estatus = $this->input->post("estatus_area");
-		$this->form_validation->set_rules("nombre_area","Nombre","required|min_length[3]|is_unique[areas.nombre]");
-		$this->form_validation->set_rules("descripcion_area","Descripcion","required|min_length[3]");
+		$nombre = $this->input->post("nombre_CategoriaEmail");
+		$descripcion = $this->input->post("descripcion_CategoriaEmail");
+		$id_estatus = $this->input->post("estatus_CategoriaEmail");
+		$this->form_validation->set_rules("nombre_CategoriaEmail","Nombre","required|min_length[3]|is_unique[menu_categoria_email.nombre]");
+		$this->form_validation->set_rules("descripcion_CategoriaEmail","Descripcion","required|min_length[3]");
 		if ($this->form_validation->run() == FALSE) {
 			$this->add();
 		}
@@ -56,39 +56,39 @@ class Areas extends CI_Controller {
 				'descripcion' => $descripcion,
 				'id_estatus' => $id_estatus,
 			);
-			if ($this->Areas_model->save($data)) {
-				redirect(base_url()."mantenimiento/areas");
+			if ($this->Emails_model->save($data)) {
+				redirect(base_url()."mantenimiento/emails");
 			}
 			else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."mantenimiento/areas/add");
+				redirect(base_url()."mantenimiento/emails/add");
 			}
 		}
 	}
 	public function view($id){
 		$data  = array(
-			'area' => $this->Areas_model->getArea($id),
+			'area' => $this->Emails_model->getEmail($id),
 		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
-		$this->load->view("mantenimiento/areas/view",$data);
+		$this->load->view("mantenimiento/emails/view",$data);
 		$this->load->view('layouts/footer');
 	}
 	public function edit($id){
 		$data  = array(
-			'area' => $this->Areas_model->getArea($id),
-			'menu_estatus' => $this->Areas_model->getMenuStatus(),
+			'area' => $this->Emails_model->getEmail($id),
+			'menu_estatus' => $this->Emails_model->getMenuStatus(),
 		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
-		$this->load->view("mantenimiento/areas/edit",$data);
+		$this->load->view("mantenimiento/emails/edit",$data);
 		$this->load->view('layouts/footer');
 	}
 	public function update(){
-		$id_area = $this->input->post("id_area");
-		$nombre = $this->input->post("nombre_area");
-		$descripcion = $this->input->post("descripcion_area");
-		$estatus = $this->input->post("estatus_area");
+		$id_area = $this->input->post("id_CategoriaEmail");
+		$nombre = $this->input->post("nombre_CategoriaEmail");
+		$descripcion = $this->input->post("descripcion_CategoriaEmail");
+		$estatus = $this->input->post("estatus_CategoriaEmail");
 
 		$data  = array(
 			'nombre' => $nombre,
@@ -96,12 +96,12 @@ class Areas extends CI_Controller {
 			'id_estatus' => $estatus,
 		);
 
-		if ($this->Areas_model->update($id_area,$data)) {
-			redirect(base_url()."mantenimiento/areas/view/".$id_area);
+		if ($this->Emails_model->update($id_area,$data)) {
+			redirect(base_url()."mantenimiento/emails/view/".$id_area);
 		}
 		else{
 			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/areas/edit/".$id_area);
+			redirect(base_url()."mantenimiento/emails/edit/".$id_area);
 		}
 	}
 	public function enabled($id){
@@ -109,12 +109,12 @@ class Areas extends CI_Controller {
 			'id_estatus' => 1,
 		);
 
-		if ($this->Areas_model->update($id,$data)) {
-			redirect(base_url()."mantenimiento/areas/");
+		if ($this->Emails_model->update($id,$data)) {
+			redirect(base_url()."mantenimiento/emails/");
 		}
 		else{
 			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/areas/");
+			redirect(base_url()."mantenimiento/emails/");
 		}
 	}
 	public function disabled($id){
@@ -122,12 +122,12 @@ class Areas extends CI_Controller {
 			'id_estatus' => 2,
 		);
 
-		if ($this->Areas_model->update($id,$data)) {
-			redirect(base_url()."mantenimiento/areas/");
+		if ($this->Emails_model->update($id,$data)) {
+			redirect(base_url()."mantenimiento/emails/");
 		}
 		else{
 			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/areas/");
+			redirect(base_url()."mantenimiento/emails/");
 		}
 	}
 }

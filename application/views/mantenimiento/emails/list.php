@@ -3,13 +3,13 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Usuarias
+      Emails
       <small>CIMAC</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="#">Configuración</a></li>
-      <li class="active">Usuarias</li>
+      <li class="active">Categorias Emails</li>
     </ol>
   </section>
 
@@ -20,7 +20,7 @@
 
         <div class="box box-danger">
           <div class="box-header">
-            <h3 class="box-title">Usuarias</h3>
+            <h3 class="box-title">Categorias</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -28,10 +28,9 @@
               <thead>
               <tr>
                 <th>#</th>
-
-
-                <th>Username</th>
-                <th>Rol</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Estatus</th>
                 <th>Ver</th>
                 <th>Editar</th>
                 <th>Estatus</th>
@@ -42,19 +41,20 @@
                     <?php foreach($areas as $area):?>
                       <tr>
                           <td><?php echo $area->id;?></td>
-                          <td><?php echo $area->username;?></td>
-                          <td><?php echo $area->rol;?></td>
+                          <td><?php echo $area->nombre;?></td>
+                          <td><?php echo $area->descripcion;?></td>
+                          <td><?php echo $area->estatus;?></td>
                           <td>
-                            <a href="<?php echo base_url()?>administrador/usuarios/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
+                            <a href="<?php echo base_url()?>mantenimiento/emails/view/<?php echo $area->id;?>" ><span class="fa  fa-eye text-green"></span></a>
                           </td>
                           <td>
-                            <a href="<?php echo base_url()?>mantenimiento/roles/edit/<?php echo $area->id;?>" ><span class="fa  fa  fa-pencil text-yellow"></span></a>
+                            <a href="<?php echo base_url()?>mantenimiento/emails/edit/<?php echo $area->id;?>" ><span class="fa  fa  fa-pencil text-yellow"></span></a>
                           </td>
                           <td>
                             <?php if ($area->id_estatus == 1): ?>
-                              <a href="<?php echo base_url()?>mantenimiento/roles/disabled/<?php echo $area->id;?>" ><span class="fa  fa-close text-red"></span></a>
+                              <a href="<?php echo base_url()?>mantenimiento/emails/disabled/<?php echo $area->id;?>" ><span class="fa  fa-close text-red"></span></a>
                             <?php else: ?>
-                              <a href="<?php echo base_url()?>mantenimiento/roles/enabled/<?php echo $area->id;?>" ><span class="fa  fa-check text-aqua"></span></a>
+                              <a href="<?php echo base_url()?>mantenimiento/emails/enabled/<?php echo $area->id;?>" ><span class="fa  fa-check text-aqua"></span></a>
                             <?php endif; ?>
 
                           </td>
@@ -67,9 +67,10 @@
               </tbody>
               <tfoot>
               <tr>
-                <th>#</th>                
-                <th>Username</th>
-                <th>Rol</th>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Estatus</th>
                 <th>Ver</th>
                 <th>Editar</th>
                 <th>Estatus</th>
@@ -78,7 +79,7 @@
             </table>
           </div>
           <div class="box-body" align="left" >
-            <a href="<?php echo base_url()?>administrador/usuarios/add"  class="btn btn-danger" >Agregar</a>
+            <a href="<?php echo base_url()?>mantenimiento/emails/add"  class="btn btn-danger" >Agregar</a>
 
           </div>
           <!-- /.box-body -->

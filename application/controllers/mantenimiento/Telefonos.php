@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Areas extends CI_Controller {
+class Telefonos extends CI_Controller {
 
 	public function __construct(){
 
 		parent::__construct();
-		$this->load->model("mantenimiento/Areas_model");
+		$this->load->model("mantenimiento/Telefonos_model");
 	}
 	/**
 	 * Index Page for this controller.
@@ -25,28 +25,28 @@ class Areas extends CI_Controller {
 	 */
 	public function index(){
 		$data  = array(
-			'areas' => $this->Areas_model->getAreas(),
+			'areas' => $this->Telefonos_model->getTelefonos(),
 		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
-		$this->load->view("mantenimiento/areas/list",$data);
+		$this->load->view("mantenimiento/telefonos/list",$data);
 		$this->load->view('layouts/footer');
 	}
 	public function add(){
 		$data  = array(
-			'menu_estatus' => $this->Areas_model->getMenuStatus(),
+			'menu_estatus' => $this->Telefonos_model->getMenuStatus(),
 		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
-		$this->load->view("mantenimiento/areas/add",$data);
+		$this->load->view("mantenimiento/telefonos/add",$data);
 		$this->load->view('layouts/footer');
 	}
 	public function store(){
-		$nombre = $this->input->post("nombre_area");
-		$descripcion = $this->input->post("descripcion_area");
-		$id_estatus = $this->input->post("estatus_area");
-		$this->form_validation->set_rules("nombre_area","Nombre","required|min_length[3]|is_unique[areas.nombre]");
-		$this->form_validation->set_rules("descripcion_area","Descripcion","required|min_length[3]");
+		$nombre = $this->input->post("nombre_CategoriaTelefono");
+		$descripcion = $this->input->post("descripcion_CategoriaTelefono");
+		$id_estatus = $this->input->post("estatus_CategoriaTelefono");
+		$this->form_validation->set_rules("nombre_CategoriaTelefono","Nombre","required|min_length[3]|is_unique[menu_categoria_telefono.nombre]");
+		$this->form_validation->set_rules("descripcion_CategoriaTelefono","Descripcion","required|min_length[3]");
 		if ($this->form_validation->run() == FALSE) {
 			$this->add();
 		}
@@ -56,39 +56,39 @@ class Areas extends CI_Controller {
 				'descripcion' => $descripcion,
 				'id_estatus' => $id_estatus,
 			);
-			if ($this->Areas_model->save($data)) {
-				redirect(base_url()."mantenimiento/areas");
+			if ($this->Telefonos_model->save($data)) {
+				redirect(base_url()."mantenimiento/telefonos");
 			}
 			else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."mantenimiento/areas/add");
+				redirect(base_url()."mantenimiento/telefonos/add");
 			}
 		}
 	}
 	public function view($id){
 		$data  = array(
-			'area' => $this->Areas_model->getArea($id),
+			'area' => $this->Telefonos_model->getTelefono($id),
 		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
-		$this->load->view("mantenimiento/areas/view",$data);
+		$this->load->view("mantenimiento/telefonos/view",$data);
 		$this->load->view('layouts/footer');
 	}
 	public function edit($id){
 		$data  = array(
-			'area' => $this->Areas_model->getArea($id),
-			'menu_estatus' => $this->Areas_model->getMenuStatus(),
+			'telefono' => $this->Telefonos_model->getTelefono($id),
+			'menu_estatus' => $this->Telefonos_model->getMenuStatus(),
 		);
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
-		$this->load->view("mantenimiento/areas/edit",$data);
+		$this->load->view("mantenimiento/telefonos/edit",$data);
 		$this->load->view('layouts/footer');
 	}
 	public function update(){
-		$id_area = $this->input->post("id_area");
-		$nombre = $this->input->post("nombre_area");
-		$descripcion = $this->input->post("descripcion_area");
-		$estatus = $this->input->post("estatus_area");
+		$id_area = $this->input->post("id_CategoriaTelefono");
+		$nombre = $this->input->post("nombre_CategoriaTelefono");
+		$descripcion = $this->input->post("descripcion_CategoriaTelefono");
+		$estatus = $this->input->post("estatus_CategoriaTelefono");
 
 		$data  = array(
 			'nombre' => $nombre,
@@ -96,12 +96,12 @@ class Areas extends CI_Controller {
 			'id_estatus' => $estatus,
 		);
 
-		if ($this->Areas_model->update($id_area,$data)) {
-			redirect(base_url()."mantenimiento/areas/view/".$id_area);
+		if ($this->Telefonos_model->update($id_area,$data)) {
+			redirect(base_url()."mantenimiento/telefonos/view/".$id_area);
 		}
 		else{
 			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/areas/edit/".$id_area);
+			redirect(base_url()."mantenimiento/telefonos/edit/".$id_area);
 		}
 	}
 	public function enabled($id){
@@ -109,12 +109,12 @@ class Areas extends CI_Controller {
 			'id_estatus' => 1,
 		);
 
-		if ($this->Areas_model->update($id,$data)) {
-			redirect(base_url()."mantenimiento/areas/");
+		if ($this->Telefonos_model->update($id,$data)) {
+			redirect(base_url()."mantenimiento/telefonos/");
 		}
 		else{
 			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/areas/");
+			redirect(base_url()."mantenimiento/telefonos/");
 		}
 	}
 	public function disabled($id){
@@ -122,12 +122,12 @@ class Areas extends CI_Controller {
 			'id_estatus' => 2,
 		);
 
-		if ($this->Areas_model->update($id,$data)) {
-			redirect(base_url()."mantenimiento/areas/");
+		if ($this->Telefonos_model->update($id,$data)) {
+			redirect(base_url()."mantenimiento/telefonos/");
 		}
 		else{
 			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."mantenimiento/areas/");
+			redirect(base_url()."mantenimiento/telefonos/");
 		}
 	}
 }

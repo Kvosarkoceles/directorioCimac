@@ -38,12 +38,12 @@
                 <input type="text" class="form-control" id="apellidos_usuario" name="apellidos_usuario" value="<?php echo set_value('apellidos_usuario');?>">
                 <?php echo form_error("apellidos_usuario","<small class='text-danger'>","</small>"); ?>
               </div>
-              <div class="form-group col-md-12">
+              <div class="form-group col-md-6">
                 <label for="username_usuario">Username</label>
-                <input type="text" class="form-control" id="username_usuario" name="username_usuario" value="<?php echo set_value('username_usuario');?>" style=" width : 47%;">
+                <input type="text" class="form-control" id="username_usuario" name="username_usuario" value="<?php echo set_value('username_usuario');?>">
                 <?php echo form_error("username_usuario","<small class='text-danger'>","</small>"); ?>
               </div>
-              <div class="form-group col-md-12">
+              <div class="form-group col-md-6">
                 <label for="titulo">Archivo</label>
                 <input type="file" class="form-control" name="mi_archivo" id="mi_archivo" accept=".gif, .jpg, .png" >
                 <?php echo form_error("mi_archivo","<span class='text-danger'>","</span>"); ?>
@@ -79,9 +79,17 @@
                 </select>
               </div>
 
+              <div class="form-group col-lg-6">
+                  <label for="institucion">Institucion:</label>
+                  <input type="text" class="form-control" id="institucion" name="institucion" value="CIMAC">
+              </div>
+              <div class="form-group col-lg-6">
+                  <label for="domicilio_laboral">Domicilio Laboral:</label>
+                  <input type="text" class="form-control" id="domicilio_laboral" name="domicilio_laboral" value="Balderas #86 Colonia Centro">
+              </div>
               <div class="form-group col-lg-12">
-                  <label for="domicilio_particularUsuario">Domicilio Particular:</label>
-                  <input type="text" class="form-control" id="domicilio_particularUsuario" name="domicilio_particularUsuario">
+                  <label for="domicilio_particular">Domicilio Particular:</label>
+                  <input type="text" class="form-control" id="domicilio_particular" name="domicilio_particular">
               </div>
 
 

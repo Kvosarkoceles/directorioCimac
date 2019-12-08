@@ -20,11 +20,11 @@
 
       <div class="col-md-6">
 
-        <div class="box box-primary">
+        <div class="box box-danger">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>dist/img/user4-128x128.jpg" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>uploads/imagenes/usuarios/128x128/<?php echo $usuario->avatar; ?>" alt="User profile picture">
 
-              <h3 class="profile-username text-center">  <?php echo $usuario->nombres." ".$usuario->apellidos; ?></h3>
+                <h3 class="profile-username text-center">  <?php echo $usuario->nombres." ".$usuario->apellidos; ?></h3>
 
               <p class="text-muted text-center"><?php echo $usuario->username; ?></p>
 
@@ -44,18 +44,8 @@
 
               <hr>
 
-              <strong><i class="fa fa-check-square-o margin-r-5"></i>Telefono</strong>
-              <p class="text-muted">
-                 <?php echo $usuario->telefono; ?>
-              </p>
-              <hr>
 
-              <strong><i class="fa fa-check-square-o margin-r-5"></i>Email</strong>
-              <p class="text-muted">
-                 <?php echo $usuario->email; ?>
-              </p>
 
-              <hr>
 
               <strong><i class="fa fa-check-square-o margin-r-5"></i>Nombre de Usuario</strong>
               <p class="text-muted">
