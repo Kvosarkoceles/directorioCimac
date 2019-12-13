@@ -5,20 +5,28 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="<?php echo base_url();?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="<?php echo base_url();?>uploads/imagenes/usuarios/128x128/<?php echo $this->session->userdata('avatar'); ?>" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p><?php echo $this->session->userdata('nombres'); ?></p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
 
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">Configuración</li>
-      <li><a href="<?php echo base_url();?>/mantenimiento/areas"><i class="fa fa-circle-o text-red"></i> <span>Areas</span></a></li>
-      <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-      <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+      <li class="header">Directorio</li>
+      <?php if(!empty($areas)):?>
+          <?php foreach($areas as $area):?>
+            <li>
+              <a href="<?php echo base_url();?>directorio/contactos/areas/<?php echo $area->id;?>">
+                <i class="fa fa-circle-o text-red"></i>
+                 <span><?php echo $area->nombre;?></span>
+               </a>
+             </li>
+          <?php endforeach;?>
+      <?php endif;?>
+
       <li class="header">Mantenimiento</li>
       <li class="treeview menu-open" style="height: auto;">
             <a href="#">

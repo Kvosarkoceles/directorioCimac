@@ -8,7 +8,8 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url()?>"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="<?php echo base_url()?>mantenimiento/roles">Roles</a></li>
+      <li><a href="<?php echo base_url()?>administrador/usuarios">Usuarias</a></li>
+      <li><a href="<?php echo base_url()?>administrador/usuarios/view/<?php echo $usuario->id; ?>"><?php echo $usuario->username; ?></a></li>
       <li class="active">Editar</li>
     </ol>
   </section>
@@ -25,28 +26,12 @@
           </div>
           <!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?php echo base_url();?>mantenimiento/roles/store" method="POST">
-
+          <form role="form" action="<?php echo base_url();?>administrador/usuarios/update" method="POST">
+            <input type="hidden" name="id_usuario" value="<?php echo $usuario->id?>">
             <div class="box-body col-md-6">
               <div class="form-group col-md-6">
-                <label for="nombre_rol">Nombres</label>
-                <input type="text" class="form-control" id="nombre_rol" name="nombre_rol" value="<?php echo $usuario->nombres; ?>">
-                <?php echo form_error("nombre_rol","<small class='text-danger'>","</small>"); ?>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="descripcion_rol">Apellidos</label>
-                <input type="text" class="form-control" id="descripcion_rol" name="descripcion_rol" value="<?php echo $usuario->apellidos; ?>">
-                <?php echo form_error("descripcion_rol","<small class='text-danger'>","</small>"); ?>
-              </div>
-              <div class="form-group col-md-12">
-                <label for="descripcion_rol">Username</label>
-                <input type="text" class="form-control" id="descripcion_rol" name="descripcion_rol" value="<?php echo $usuario->username; ?>">
-                <?php echo form_error("descripcion_rol","<small class='text-danger'>","</small>"); ?>
-              </div>
-
-              <div class="form-group col-md-6">
-                    <label for="estatus_rol">Area:</label>
-                    <select name="estatus_rol" id="estatus_rol" class="form-control">
+                    <label for="area_usuario">Area:</label>
+                    <select name="area_usuario" id="area_usuario" class="form-control">
                         <?php foreach($areas as $rol):?>
                             <option value="<?php echo $rol->id;?>" <?php echo $rol->id==$usuario->id_area
                             ? "selected":"";?> ><?php echo $rol->nombre;?></option>
@@ -56,13 +41,13 @@
                 </div>
 
               <div class="form-group col-md-6">
-                <label for="estatus_rol">Rol:</label>
-                <select name="estatus_rol" id="estatus_rol" class="form-control">
+                <label for="rol_usuario">Rol:</label>
+                <select name="rol_usuario" id="rol_usuario" class="form-control">
                     <?php foreach($roles as $rol):?>
                         <option value="<?php echo $rol->id;?>" <?php echo $rol->id==$usuario->id_rol
                         ? "selected":"";?> ><?php echo $rol->nombre;?></option>
                     <?php endforeach;?>
-                </select>              
+                </select>
               </div>
                   <div class="form-group col-md-12">
                     <button type="submit" class="btn btn-danger">Guardar</button>

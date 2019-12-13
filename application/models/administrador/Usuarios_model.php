@@ -4,21 +4,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Usuarios_model extends CI_Model {
 
 	public function getUsuarios(){
-		$this->db->select("u.*,r.nombre as rol");
+		$this->db->select("u.*,r.nombre as rol,a.nombre as area");
 		$this->db->from("usuarios u");
-		$this->db->join("menu_roles r","u.id_estatus = r.id");
-	//	$this->db->where("u.id_estatus","1");
+		$this->db->join("menu_roles r","u.id_rol = r.id");
+		$this->db->join("areas a","u.id_area = a.id");
 		$resultados = $this->db->get();
 		return $resultados->result();
 	}
-
 	public function getUsuario($id){
 		$this->db->select("u.*,
 											 r.nombre as rol,
 											 s.nombre as status,
 											 a.nombre as area,
 											 c.nombres as nombres,
-											 c.apellidos as apellidos
+											 c.apellidos as apellidos,
+											 c.id as id_contacto
 											 ");
 		$this->db->from("usuarios u");
 		$this->db->join("menu_roles r","u.id_rol = r.id");
@@ -69,5 +69,39 @@ class Usuarios_model extends CI_Model {
 	private function savePriv($tabla,$data){
 		$this->db->cache_delete_all();
 		return $this->db->insert($tabla,$data);
+	}
+	public function save2($tabla,$data){
+		$this->db->cache_delete_all();
+		$resultados = $this->db->insert($tabla,$data);
+		$id=$this->db->insert_id();
+		if ($id>0) {
+			return $id;
+		}
+		return $resultados;
+	}
+	private function save1($tabla,$data){
+		$this->db->cache_delete_all();
+		return $this->db->insert($tabla,$data);
+	}
+	public function login($username){
+		$this->db->select("u.*,c.nombres as nombres,");
+		$this->db->from("usuarios u");
+	//	$this->db->join("menu_roles r","u.id_rol = r.id");
+		//$this->db->join("menu_status s","u.id_estatus = s.id");
+		//$this->db->join("areas a","u.id_area = a.id");
+		$this->db->join("contactos c","u.id_contacto = c.id");
+		//$this->db->where("username", $username);
+		$resultados = $this->db->get("usuarios");
+		if ($resultados->num_rows() > 0) {
+			return $resultados->row();
+		}
+		else{
+			return false;
+		}
+	}
+	public function update($id,$data){
+		$this->db->cache_delete_all();
+		$this->db->where("id",$id);
+		return $this->db->update("usuarios",$data);
 	}
 }

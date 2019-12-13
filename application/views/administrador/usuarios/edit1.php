@@ -3,7 +3,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Agregar
+      Editar
       <small>Usuaria</small>
     </h1>
     <ol class="breadcrumb">
@@ -21,7 +21,7 @@
         <!-- general form elements -->
         <div class="box box-danger">
           <div class="box-header with-border">
-            <h3 class="box-title">Agregar</h3>
+            <h3 class="box-title">Editar</h3>
           </div>
           <!-- /.box-header -->
           <!-- form start -->
@@ -30,36 +30,18 @@
             <div class="box-body col-md-6">
               <div class="form-group col-md-6">
                 <label for="nombres_usuario">Nombres</label>
-                <input type="text" class="form-control" id="nombres_usuario" name="nombres_usuario" value="<?php echo set_value('nombres_usuario');?>">
+                <input type="text" class="form-control" id="nombres_usuario" name="nombres_usuario" value="<?php echo $usuario->nombres; ?>">
                 <?php echo form_error("nombres_usuario","<small class='text-danger'>","</small>"); ?>
               </div>
               <div class="form-group col-md-6">
                 <label for="apellidos_usuario">Apellidos</label>
-                <input type="text" class="form-control" id="apellidos_usuario" name="apellidos_usuario" value="<?php echo set_value('apellidos_usuario');?>">
+                <input type="text" class="form-control" id="apellidos_usuario" name="apellidos_usuario" value="<?php echo $usuario->apellidos; ?>">
                 <?php echo form_error("apellidos_usuario","<small class='text-danger'>","</small>"); ?>
               </div>
-              <div class="form-group col-md-12">
-                <label for="username_usuario">Username</label>
-                <input type="text" class="form-control" id="username_usuario" name="username_usuario" value="<?php echo set_value('username_usuario');?>" style=" width : 47%;">
-                <?php echo form_error("username_usuario","<small class='text-danger'>","</small>"); ?>
-              </div>
-              <div class="form-group col-md-12">
-                <label for="titulo">Archivo</label>
-                <input type="file" class="form-control" name="mi_archivo" id="mi_archivo" accept=".gif, .jpg, .png" >
-                <?php echo form_error("mi_archivo","<span class='text-danger'>","</span>"); ?>
-              </div>
 
-              <div class="form-group col-md-6">
-                <label for="password_usuario">Password</label>
-                <input type="password" class="form-control" id="password_usuario" name="password_usuario" value="<?php echo set_value('password_usuario');?>">
-                <?php echo form_error("password_usuario","<small class='text-danger'>","</small>"); ?>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="confirmacionPasword_usuario">Confirmacion de password</label>
-                <input type="password" class="form-control" id="confirmacionPasword_usuario" name="confirmacionPasword_usuario" value="<?php echo set_value('confirmacionPasword_usuario');?>">
-                <?php echo form_error("confirmacionPasword_usuario","<small class='text-danger'>","</small>"); ?>
-              </div>
 
+
+          
 
               <div class="form-group col-md-6">
                     <label for="area_usuario">Area:</label>

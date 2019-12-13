@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url()?>"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="<?php echo base_url()?>administrador/usuarios">Usuarias</a></li>
-      <!-- <li class="active"><?php echo $area->nombre; ?></li>-->
+     <li class="active"><?php echo $usuario->username; ?></li>
     </ol>
   </section>
 
@@ -22,7 +22,7 @@
 
         <div class="box box-danger">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>uploads/imagenes/usuarios/128x128/<?php echo $usuario->avatar; ?>" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>uploads/imagenes/usuarios/thumbs/<?php echo $usuario->avatar; ?>" alt="User profile picture">
 
                 <h3 class="profile-username text-center">  <?php echo $usuario->nombres." ".$usuario->apellidos; ?></h3>
 
@@ -33,6 +33,7 @@
 
               <p class="text-muted">
               <?php echo $usuario->nombres; ?>
+               <a class="pull-right" href="<?php echo base_url()?>directorio/contactos/edit/<?php echo $usuario->id_contacto; ?>">Cambiar</a>
               </p>
 
               <hr>
@@ -40,6 +41,7 @@
 
               <p class="text-muted">
                 <?php echo $usuario->apellidos; ?>
+                 <a class="pull-right" href="<?php echo base_url()?>directorio/contactos/edit/<?php echo $usuario->id_contacto; ?>">Cambiar</a>
               </p>
 
               <hr>
@@ -50,37 +52,41 @@
               <strong><i class="fa fa-check-square-o margin-r-5"></i>Nombre de Usuario</strong>
               <p class="text-muted">
                  <?php echo $usuario->username; ?>
-              </p>
+              
 
+              </p>
 
               <hr>
 
               <strong><i class="fa fa-check-square-o margin-r-5"></i>Password</strong>
               <p class="text-muted">
-                 <a href="#">Restablecer</a>
+                 <a href="<?php echo base_url()?>administrador/usuarios/passwordReset/<?php echo $usuario->id; ?>" class="pull-right">Restablecer</a>
               </p>
               <hr>
 
               <strong><i class="fa fa-check-square-o margin-r-5"></i>Area</strong>
               <p class="text-muted">
                  <?php echo $usuario->area; ?>
+                 <a class="pull-right" href="<?php echo base_url()?>administrador/usuarios/edit/<?php echo $usuario->id; ?>">Cambiar</a>
               </p>
               <hr>
 
               <strong><i class="fa fa-check-square-o margin-r-5"></i>Rol</strong>
               <p class="text-muted">
                  <?php echo $usuario->rol; ?>
+                 <a class="pull-right" href="<?php echo base_url()?>administrador/usuarios/edit/<?php echo $usuario->id; ?>">Cambiar</a>
               </p>
               <hr>
 
               <strong><i class="fa fa-check-square-o margin-r-5"></i>Estatus</strong>
               <p class="text-muted">
                  <?php echo $usuario->status; ?>
+                 <a class="pull-right" href="<?php echo base_url()?>administrador/usuarios/updateStatus/<?php echo $usuario->id; ?>">Cambiar</a>
               </p>
               <hr>
 
 
-              <a href="<?php echo base_url()?>administrador/usuarios/edit/<?php echo $usuario->id;?>" class="btn btn-danger btn-block"><b>Editar</b></a>
+
             </div>
             <!-- /.box-body -->
           </div>

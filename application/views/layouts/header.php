@@ -60,10 +60,11 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
 
+
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url() ?>dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <img src="<?php echo base_url() ?>uploads/imagenes/usuarios/128x128/<?php echo $this->session->userdata('avatar'); ?>" class="user-image" alt="User Image">
+              <span class="hidden-xs"><?php echo $this->session->userdata('nombres'); ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -96,7 +97,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo base_url() ?>administrador/auth/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

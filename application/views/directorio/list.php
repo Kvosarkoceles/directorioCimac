@@ -3,13 +3,13 @@ usuarios<!-- Content Wrapper. Contains page content -->
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Usuarias
+      Contactos
       <small>CIMAC</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="#">Configuración</a></li>
-      <li class="active">Usuarias</li>
+      <li class="active">Contactos</li>
     </ol>
   </section>
 
@@ -28,33 +28,27 @@ usuarios<!-- Content Wrapper. Contains page content -->
               <thead>
               <tr>
                 <th>#</th>
-
-
-                <th>Username</th>
-                <th>Area</th>
-                  <th>Rol</th>
-                <th>Ver</th>
-
-                <th>Estatus</th>
+                <th>Areas</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Institucion</th>
+                <th>Opciones</th>
               </tr>
               </thead>
               <tbody>
-                <?php if(!empty($usuarios)):?>
-                    <?php foreach($usuarios as $usuario):?>
+                <?php if(!empty($contactos)):?>
+                    <?php foreach($contactos as $contacto):?>
                       <tr>
-                          <td><?php echo $usuario->id;?></td>
-                          <td><?php echo $usuario->username;?></td>
-                          <td><?php echo $usuario->area;?></td>
-                          <td><?php echo $usuario->rol;?></td>
+                          <td><?php echo $contacto->id;?></td>
+                          <td><?php echo $contacto->id_area;?></td>
+                          <td><?php echo $contacto->nombres;?></td>
+                          <td><?php echo $contacto->apellidos;?></td>
+                          <td><?php echo $contacto->institucion;?></td>
                           <td>
-                            <a href="<?php echo base_url()?>administrador/usuarios/view/<?php echo $usuario->id;?>" ><span class="fa  fa-eye text-green"></span></a>
-                          </td>
-
-                          <td>
-                            <?php if ($usuario->id_estatus == 1): ?>
-                              <a href="<?php echo base_url()?>administrador/usuarios/disabled/<?php echo $usuario->id;?>" ><span class="fa  fa-close text-red"></span></a>
+                            <?php if ($contacto->id_estatus == 1): ?>
+                              <a href="<?php echo base_url()?>administrador/usuarios/disabled/<?php echo $contacto->id;?>" ><span class="fa  fa-close text-red"></span></a>
                             <?php else: ?>
-                              <a href="<?php echo base_url()?>administrador/usuarios/enabled/<?php echo $usuario->id;?>" ><span class="fa  fa-check text-aqua"></span></a>
+                              <a href="<?php echo base_url()?>administrador/usuarios/enabled/<?php echo $contacto->id;?>" ><span class="fa  fa-check text-aqua"></span></a>
                             <?php endif; ?>
 
                           </td>
@@ -68,12 +62,11 @@ usuarios<!-- Content Wrapper. Contains page content -->
               <tfoot>
               <tr>
                 <th>#</th>
-                <th>Username</th>
-                <th>Area</th>
-                  <th>Rol</th>
-                <th>Ver</th>
-
-                <th>Estatus</th>
+                <th>Areas</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Institucion</th>
+                <th>Opciones</th>
               </tr>
               </tfoot>
             </table>

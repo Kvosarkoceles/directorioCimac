@@ -238,6 +238,198 @@ class Usuarios extends CI_Controller {
 
 			}
 	}
+
+/*	public function store3qq(){
+		$nombres = $this->input->post("nombres_usuario");
+		$apellidos = $this->input->post("apellidos_usuario");
+		$username = $this->input->post("username_usuario");
+		$password = password_hash($this->input->post("password_usuario"), PASSWORD_DEFAULT);
+		$rol = $this->input->post("rol_usuario");
+		$area = $this->input->post("area_usuario");
+		$domicilioParticular = $this->input->post("domicilio_particularUsuario");
+		$datos_asistente = $this->input->post("datos_asistente");
+		$telefono_usuario = $this->input->post("telefono_usuario");
+		$email_usuario=$this->input->post("email_usuario");
+		$this->form_validation->set_rules("nombres_usuario","Nombres","required|min_length[3]");
+		$this->form_validation->set_rules("apellidos_usuario","Apellidos","required|min_length[3]");
+		$this->form_validation->set_rules("username_usuario","Username","trim|required|is_unique[usuarios.username]|min_length[3]");
+		$this->form_validation->set_rules('password_usuario', 'Password', 'required|min_length[5]|max_length[30]');
+		$this->form_validation->set_rules('confirmacionPasword_usuario', 'Confirmation', 'required|matches[password_usuario]');
+		if ($this->form_validation->run() == FALSE) {
+				$this->add();
+		}else {
+			$mi_archivo = 'mi_archivo';
+			$config['upload_path'] = './uploads/imagenes/usuarios';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['file_name'] = $username;
+			$config['max_size'] = "50000";//tamaño en kilobytes
+			$config['max_width'] = "2000";
+			$config['max_height'] = "2000";
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload($mi_archivo)) {
+				echo'<script type="text/javascript">
+								alert("Agrege un Avatar por favor");
+							</script>';
+					$this->add();
+			}else {
+				$file_info = $this->upload->data();
+				$archivo = $file_info['file_name'];
+				$dataContanto = array(
+					'nombres' => $nombres,
+					'apellidos' => "$apellidos",
+					'institucion' => "Comunicación e Información de la Mujer A. C. CDMX, 2019",
+					'domicilio_laboral' => "Balderas 86, Colonia Centro, 06050 Ciudad de México, CDMX",
+					'domicilio_particular' => $domicilioParticular,
+					'datos_asistente' => $datos_asistente,
+					'id_usuario' => "1",
+					'id_estatus' => "1",
+				);
+				$id_contacto =$this->Usuarios_model->save2("contactos",$dataContanto);
+				$data  = array(
+					'username' => $username,
+					'password' => $password,
+					'avatar' => $archivo,
+					'id_rol' => $rol,
+					'id_area' => $area,
+					'id_estatus' => "1",
+					'id_contacto' => $id_contacto,
+				);
+				$data_telefonoUsuario = array(
+					'telefono' => $telefono_usuario,
+				);
+				$data_emailUsuario = array(
+					'email' => $email_usuario,
+				);
+				if ($id_contacto>0) {
+					if (strcmp ($telefono_usuario , "" ) !== 0) {
+						if (strcmp ($email_usuario , "" ) !== 0) {
+							$this->Usuarios_model->save2("telefonos",$data_telefonoUsuario);
+							$this->Usuarios_model->save2("contactos",$data_emailUsuario);
+						} else {
+							$this->Usuarios_model->save2("contactos",$data_telefonoUsuario);
+						}
+					} else {
+						if (strcmp ($email_usuario , "" ) !== 0) {
+							$this->Usuarios_model->save2("contactos",$data_emailUsuario);
+						} else {
+							// code...
+						}
+						// code...
+					}
+
+				} else {
+					$this->session->set_flashdata("error","No se pudo guardar la informacion");
+					redirect(base_url()."administrador/usuarios/add");
+				}
+
+
+			}
+
+		//	$file_info = $this->upload->data();
+			//$archivo = $file_info['file_name'];
+
+		}
+	}
+	public function store2(){
+		$nombres = $this->input->post("nombres_usuario");
+		$apellidos = $this->input->post("apellidos_usuario");
+		$username = $this->input->post("username_usuario");
+		$password = password_hash($this->input->post("password_usuario"), PASSWORD_DEFAULT);
+		$rol = $this->input->post("rol_usuario");
+		$area = $this->input->post("area_usuario");
+		$domicilioParticular = $this->input->post("domicilio_particularUsuario");
+		$datos_asistente = $this->input->post("datos_asistente");
+		$telefono_usuario = $this->input->post("telefono_usuario");
+		$this->form_validation->set_rules("nombres_usuario","Nombres","required|min_length[3]");
+		$this->form_validation->set_rules("apellidos_usuario","Apellidos","required|min_length[3]");
+		$this->form_validation->set_rules("username_usuario","Username","trim|required|is_unique[usuarios.username]|min_length[3]");
+		$this->form_validation->set_rules('password_usuario', 'Password', 'required|min_length[5]|max_length[30]');
+		$this->form_validation->set_rules('confirmacionPasword_usuario', 'Confirmation', 'required|matches[password_usuario]');
+		if ($this->form_validation->run() == FALSE) {
+				$this->add();
+		}else {
+			$mi_archivo = 'mi_archivo';
+			$config['upload_path'] = './uploads/imagenes/usuarios';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['file_name'] = $username;
+			$config['max_size'] = "50000";//tamaño en kilobytes
+			$config['max_width'] = "2000";
+			$config['max_height'] = "2000";
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload($mi_archivo)) {
+				echo'<script type="text/javascript">
+								alert("Agrege un Avatar por favor");
+							</script>';
+					$this->add();
+			}else {
+				$file_info = $this->upload->data();
+				$archivo = $file_info['file_name'];
+				$dataContanto = array(
+					'nombres' => $nombres,
+					'apellidos' => "$apellidos",
+					'institucion' => "Comunicación e Información de la Mujer A. C. CDMX, 2019",
+					'domicilio_laboral' => "Balderas 86, Colonia Centro, 06050 Ciudad de México, CDMX",
+					'domicilio_particular' => $domicilioParticular,
+					'datos_asistente' => $datos_asistente,
+					'id_usuario' => "1",
+					'id_estatus' => "1",
+				);
+				$id_contacto =$this->Usuarios_model->save2("contactos",$dataContanto);
+				$data  = array(
+					'username' => $username,
+					'password' => $password,
+					'avatar' => $archivo,
+					'id_rol' => $rol,
+					'id_area' => $area,
+					'id_estatus' => "1",
+					'id_contacto' => $id_contacto,
+				);
+				if (strcmp ($telefono_usuario , "" ) !== 0) {
+					$data_telefonoUsuario = array(
+						'telefono' => $telefono_usuario,
+					);
+					if ($this->Usuarios_model->save("telefonos",$data_telefonoUsuario)) {
+						//$this->thumbs($archivo);
+						$width=128;
+						$height=128;
+						$destino='128x128';
+						$width2=160;
+						$height2=160;
+						$destino2='thumbs';
+						$this->thumbs($archivo,$width,$height,$destino);
+						$this->thumbs($archivo,$width2,$height2,$destino2);
+						redirect(base_url()."administrador/usuarios");
+					}
+					else{
+						$this->session->set_flashdata("error","No se pudo guardar la informacion");
+						redirect(base_url()."administrador/usuarios/add");
+					}
+				}else {
+					if ($this->Usuarios_model->save2("usuarios",$dataContanto)) {
+						//$this->thumbs($archivo);
+						$width=128;
+						$height=128;
+						$destino='128x128';
+						$width2=160;
+						$height2=160;
+						$destino2='thumbs';
+						$this->thumbs($archivo,$width,$height,$destino);
+						$this->thumbs($archivo,$width2,$height2,$destino2);
+						redirect(base_url()."administrador/usuarios");
+					}
+					else{
+						$this->session->set_flashdata("error","No se pudo guardar la informacion");
+						redirect(base_url()."administrador/usuarios/add");
+					}
+				}
+
+			}
+
+		//	$file_info = $this->upload->data();
+			//$archivo = $file_info['file_name'];
+
+		}
+	}*/
 	private function thumbs($imagen,$width,$height,$destino) {
 		$CI = & get_instance();
 		$CI->load->library('image_lib');
@@ -252,71 +444,5 @@ class Usuarios extends CI_Controller {
 		if (!$CI->image_lib->resize()) {
 			echo $this->image_lib->display_errors('', '');
 		}
-	}
-	public function update(){
-		$id = $this->input->post("id_usuario");
-		$rol = $this->input->post("rol_usuario");
-		$area = $this->input->post("area_usuario");
-		$data = array(
-			'id_area' => $area,
-			'id_rol' => $rol,
-		);
-		if ($this->Usuarios_model->update($id,$data)) {
-			redirect(base_url()."administrador/usuarios/view/".$id);
-		}
-		else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."administrador/usuarios/edit/".$id);
-		}
-	}
-	public function updateStatus($id){
-		$status=$this->Usuarios_model->getUsuario($id)->id_estatus;
-		if ($status==1) {
-			$this->disabled($id);
-		}elseif ($status==2) {
-			$this->enabled($id);
-		}
-	}
-	public function enabled($id){
-		$data  = array(
-			'id_estatus' => 1,
-		);
-
-		if ($this->Usuarios_model->update($id,$data)) {
-			redirect(base_url()."administrador/usuarios");
-		}
-		else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."administrador/usuarios/edit/".$id);
-		}
-	}
-	public function disabled($id){
-		$data  = array(
-			'id_estatus' => 2,
-		);
-
-		if ($this->Usuarios_model->update($id,$data)) {
-			redirect(base_url()."administrador/usuarios");
-		}
-		else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."administrador/usuarios/edit/".$id);
-		}
-	}
-	public function passwordReset($id){
-			$password = password_hash("CIMAC", PASSWORD_DEFAULT);
-			$data = array(
-				'password' => $password,
-			);
-			if ($this->Usuarios_model->update($id,$data)) {
-				if ($this->session->userdata('id')==$id) {
-					redirect(base_url()."administrador/auth/logout");
-				}
-				redirect(base_url()."administrador/usuarios");
-			}
-			else{
-				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/usuarios/edit/".$id);
-			}
 	}
 }
