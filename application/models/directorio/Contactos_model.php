@@ -11,6 +11,7 @@ class Contactos_model extends CI_Model {
 		return $resultados->result();
 	}
 	public function getContactos($id){
+		$this->db->cache_on();
 		$this->db->select("c.*");
 		$this->db->from("contactos c");
 		$this->db->where("c.id_area",$id);
