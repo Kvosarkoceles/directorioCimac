@@ -27,8 +27,11 @@ class Areas extends CI_Controller {
 		$data  = array(
 			'areas' => $this->Areas_model->getAreas(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Areas_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/areas/list",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -36,8 +39,11 @@ class Areas extends CI_Controller {
 		$data  = array(
 			'menu_estatus' => $this->Areas_model->getMenuStatus(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Contactos_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/areas/add",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -69,8 +75,11 @@ class Areas extends CI_Controller {
 		$data  = array(
 			'area' => $this->Areas_model->getArea($id),
 		);
+		$dataAreas = array(
+			'areas' => $this->Areas_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/areas/view",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -79,8 +88,11 @@ class Areas extends CI_Controller {
 			'area' => $this->Areas_model->getArea($id),
 			'menu_estatus' => $this->Areas_model->getMenuStatus(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Areas_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/areas/edit",$data);
 		$this->load->view('layouts/footer');
 	}

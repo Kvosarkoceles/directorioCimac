@@ -27,8 +27,11 @@ class Roles extends CI_Controller {
 		$data  = array(
 			'areas' => $this->Roles_model->getRoles(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Roles_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/roles/list",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -36,8 +39,11 @@ class Roles extends CI_Controller {
 		$data  = array(
 			'menu_estatus' => $this->Roles_model->getMenuStatus(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Roles_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/roles/add",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -69,8 +75,11 @@ class Roles extends CI_Controller {
 		$data  = array(
 			'area' => $this->Roles_model->getRol($id),
 		);
+		$dataAreas = array(
+			'areas' => $this->Roles_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/roles/view",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -79,8 +88,11 @@ class Roles extends CI_Controller {
 			'area' => $this->Roles_model->getRol($id),
 			'menu_estatus' => $this->Roles_model->getMenuStatus(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Roles_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/roles/edit",$data);
 		$this->load->view('layouts/footer');
 	}

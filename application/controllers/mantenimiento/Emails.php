@@ -27,8 +27,11 @@ class Emails extends CI_Controller {
 		$data  = array(
 			'areas' => $this->Emails_model->getEmails(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Emails_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/emails/list",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -36,8 +39,11 @@ class Emails extends CI_Controller {
 		$data  = array(
 			'menu_estatus' => $this->Emails_model->getMenuStatus(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Emails_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/emails/add",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -69,8 +75,11 @@ class Emails extends CI_Controller {
 		$data  = array(
 			'area' => $this->Emails_model->getEmail($id),
 		);
+		$dataAreas = array(
+			'areas' => $this->Emails_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/emails/view",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -79,8 +88,11 @@ class Emails extends CI_Controller {
 			'area' => $this->Emails_model->getEmail($id),
 			'menu_estatus' => $this->Emails_model->getMenuStatus(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Emails_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/emails/edit",$data);
 		$this->load->view('layouts/footer');
 	}

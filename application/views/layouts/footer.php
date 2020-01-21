@@ -19,7 +19,7 @@
     <div class="tab-pane" id="control-sidebar-home-tab">
 
     </div>
-    <!-- /.tab-pane --> 
+    <!-- /.tab-pane -->
     <!-- Stats tab content -->
     <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
     <!-- /.tab-pane -->
@@ -54,14 +54,33 @@
 <!-- page script -->
 <script>
 $(function () {
-  $('#example1').DataTable()
-  $('#example2').DataTable({
+  $('#example1').DataTable({
     'paging'      : true,
+    'lengthChange': true,
+    'searching'   : true,
+    'ordering'    : true,
+    'info'        : true,
+    'autoWidth'   : false,
+      "scrollX": true,
+
+  })
+  $('#example2').DataTable({
+    'paging'      : false,
     'lengthChange': false,
     'searching'   : false,
     'ordering'    : true,
-    'info'        : true,
-    'autoWidth'   : false
+    'info'        : false,
+    'autoWidth'   : false,
+      "scrollX": true,
+  })
+  $('#tabala_correos').DataTable({
+    'paging'      : false,
+    'lengthChange': false,
+    'searching'   : false,
+    'ordering'    : true,
+    'info'        : false,
+    'autoWidth'   : false,
+      "scrollX": true,
   })
 })
 </script>

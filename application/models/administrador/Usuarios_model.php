@@ -92,7 +92,7 @@ class Usuarios_model extends CI_Model {
 		//$this->db->join("menu_status s","u.id_estatus = s.id");
 		//$this->db->join("areas a","u.id_area = a.id");
 		$this->db->join("contactos c","u.id_contacto = c.id");
-		//$this->db->where("username", $username);
+		$this->db->where("u.username", $username);
 		$resultados = $this->db->get("usuarios");
 		if ($resultados->num_rows() > 0) {
 			return $resultados->row();

@@ -69,10 +69,10 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url() ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url() ?>uploads/imagenes/usuarios/128x128/<?php echo $this->session->userdata('avatar'); ?>" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  <?php echo $this->session->userdata('nombres'); ?> - <?php echo $this->session->userdata('username'); ?>
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -94,7 +94,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo base_url() ?>directorio/usuarios/profile/<?php echo $this->session->userdata('id'); ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo base_url() ?>administrador/auth/logout" class="btn btn-default btn-flat">Sign out</a>

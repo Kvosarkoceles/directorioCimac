@@ -27,8 +27,11 @@ class Telefonos extends CI_Controller {
 		$data  = array(
 			'areas' => $this->Telefonos_model->getTelefonos(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Telefonos_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/telefonos/list",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -36,8 +39,11 @@ class Telefonos extends CI_Controller {
 		$data  = array(
 			'menu_estatus' => $this->Telefonos_model->getMenuStatus(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Telefonos_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/telefonos/add",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -69,8 +75,11 @@ class Telefonos extends CI_Controller {
 		$data  = array(
 			'area' => $this->Telefonos_model->getTelefono($id),
 		);
+		$dataAreas = array(
+			'areas' => $this->Telefonos_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/telefonos/view",$data);
 		$this->load->view('layouts/footer');
 	}
@@ -79,8 +88,11 @@ class Telefonos extends CI_Controller {
 			'telefono' => $this->Telefonos_model->getTelefono($id),
 			'menu_estatus' => $this->Telefonos_model->getMenuStatus(),
 		);
+		$dataAreas = array(
+			'areas' => $this->Telefonos_model->getMenuAreas(),
+		);
 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
+		$this->load->view('layouts/aside',$dataAreas);
 		$this->load->view("mantenimiento/telefonos/edit",$data);
 		$this->load->view('layouts/footer');
 	}

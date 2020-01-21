@@ -33,5 +33,8 @@ class Welcome extends CI_Controller {
 				$this->load->view('layouts/aside',$dataAreas);
 				$this->load->view('blank');
 				$this->load->view('layouts/footer');
+				redirect(base_url()."directorio/contactos");
 	}
+
+
 }

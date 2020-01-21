@@ -34,4 +34,12 @@ class Emails_model extends CI_Model {
 		$this->db->cache_delete_all();
 		return $this->db->insert("menu_categoria_email",$data);
 	}
+	public function getMenuAreas(){
+		$this->db->cache_on();
+		$this->db->select("u.*");
+		$this->db->from("areas u");
+		$this->db->where("u.id_estatus","1");
+		$resultados = $this->db->get();
+		return $resultados->result();
+	}
 }

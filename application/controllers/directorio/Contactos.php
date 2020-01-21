@@ -15,6 +15,7 @@ class Contactos extends CI_Controller {
 		$area=$this->session->userdata("area");
 		$data  = array(
 			'contactos' => $this->Contactos_model->getContactos($area),
+			'area' => $this->Contactos_model->getArea($area),
 		);
 		$dataAreas = array(
 			'areas' => $this->Contactos_model->getMenuAreas(),
@@ -28,6 +29,7 @@ class Contactos extends CI_Controller {
 	public function areas($area){
 		$data  = array(
 			'contactos' => $this->Contactos_model->getContactos($area),
+			'area' => $this->Contactos_model->getArea($area),
 		);
 		$dataAreas = array(
 			'areas' => $this->Contactos_model->getMenuAreas(),
@@ -35,6 +37,20 @@ class Contactos extends CI_Controller {
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside",$dataAreas);
 		$this->load->view("directorio/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function view($id){
+		$data  = array(
+			'contacto' => $this->Contactos_model->getContacto($id),
+		);
+		$dataAreas = array(
+			'areas' => $this->Contactos_model->getMenuAreas(),
+			'telefonos' => $this->Contactos_model->getTelefonos($id),
+			'correos' => $this->Contactos_model->getCorreos($id),
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside",$dataAreas);
+		$this->load->view("directorio/view",$data);
 		$this->load->view("layouts/footer");
 	}
 }

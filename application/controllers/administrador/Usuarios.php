@@ -304,7 +304,7 @@ class Usuarios extends CI_Controller {
 		}
 	}
 	public function passwordReset($id){
-			$password = password_hash("CIMAC", PASSWORD_DEFAULT);
+			$password = password_hash("cimac", PASSWORD_DEFAULT);
 			$data = array(
 				'password' => $password,
 			);

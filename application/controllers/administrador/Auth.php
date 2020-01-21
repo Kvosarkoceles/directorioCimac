@@ -32,7 +32,12 @@ class Auth extends CI_Controller {
 				'login' => TRUE
 			);
 			$this->session->set_userdata($data);
-			redirect(base_url()."Welcome");
+			if ($password=="x") {
+					redirect(base_url()."directorio/usuarios/profile/".$this->session->userdata('id'));
+			}else {
+				redirect(base_url()."Welcome");
+			}
+
 		}
 		else{
 			$this->session->set_flashdata("error","La contraseña son incorrectos");
